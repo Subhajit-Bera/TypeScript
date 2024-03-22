@@ -48,6 +48,53 @@ const arr3 = [];
 //with size array declaration
 const arr4 = new Array(20);
 const arr5 = new Array(20);
+//Fill array with defult value:
+// const arr4: Array<string> = new Array(20).fill("default_value");
 //Union type array
 const arr6 = [12, 10, "abc", "mm"];
 arr6[0] = "th"; //updating the value;
+//Creating tuple for fixed size array
+const arr7 = [12.3, 45, 11];
+arr7.forEach(i => {
+    console.log(i);
+});
+//Object:
+const obj = {
+    height: 100,
+    weight: 288,
+    gender: true
+};
+const obj1 = {
+    height: 1700,
+    weight: 454,
+    gender: false
+};
+const obj2 = {
+    height: 1790,
+    weight: 564,
+    gender: true
+};
+//If there someone who doesn't want to provide gender:
+//In that case we make this field optional by putting ? after the field
+const obj3 = {
+    height: 1790,
+    weight: 564,
+};
+const ob1 = {
+    height: 170,
+    weight: 50,
+    scollar: true,
+    func: (n, m) => {
+        console.log(n * m);
+    }
+};
+ob1.func(10, 20);
+const ob2 = {
+    height: 180,
+    weight: 68,
+    scollar: false,
+    func: (n, m) => {
+        console.log(n * m);
+    }
+};
+ob2.func(12, 13);

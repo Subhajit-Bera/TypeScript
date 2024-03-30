@@ -25,7 +25,7 @@
 //Type for function
 // const func = (n: number, m: number) => {
 //     console.log(n, m);
-//     return String(n + m); //Here the return type string. 
+//     return String(n + m); //Here the return type string. (type conversion)
 //     return n + m; //Here the return type is number.
 // } //because the return type is not mention we can return any type via type conversion
 
@@ -43,7 +43,8 @@
 // type userName = string | number;
 // let n: userName = "Subh";
 
-// type themeMode="light" | "dark";
+//We can also mention some specific value in type aliases
+// type themeMode="light" | "dark"; 
 // const mode:themeMode="light"; //We can assign only light or dark to this variable,otherwise it will give error 
 
 
@@ -198,6 +199,7 @@
 
 // console.log(func(2,3));
 
+//--
 
 //Default parameter
 // type FuncType = (n: number, m: number, l?: number) => number;
@@ -207,6 +209,8 @@
 
 // func(25, 23);
 
+//--
+
 //Anothery way Default parameter
 // const func1 =(n:number, m:number, l:number = 20):number => {
 //   return n * m * l;
@@ -214,11 +218,15 @@
 
 // func1(25, 23);
 
+//--
+
 //Rest Operator
 // const func=(...m:number[])=>{   //...m : rest Operator
 //     return m;
 // }
 // func(1,4,5,7,23);
+
+//--
 
 //Rest Operator with type Aliases
 // type FuncType = ( ...m: number[]) => number[];
@@ -228,6 +236,7 @@
 // }
 // func(1,4,5,7,23);
 
+//--
 
 //Function with function kwyword
 // function lol(n:number):number{
@@ -235,8 +244,14 @@
 // }
 // console.log(lol(40));
 
+//--
+
 //with type aliases
 // type FuncType=(n:number)=>number
+// const lol:FuncType=function lol(n){
+//     return n;
+// }
+
 // const lol:FuncType=function lol(n){
 //     return n;
 // }
@@ -244,6 +259,7 @@
 // console.log(lol(4));
 
 
+//--
 
 //Function with objext
 
@@ -251,6 +267,8 @@
 //     console.log(product);
 // }
 
+
+//--
 
 //Type aliases for Object
 // type GetDataType =(product:{
@@ -265,6 +283,7 @@
 //     console.log(product)
 // }
 
+//creating an sample product
 // const sampleProduct={
 //     name:"Iphone",
 //     stock:20,
@@ -272,7 +291,7 @@
 //     pic:"picurl"
 // }
 
-//We can directly pass the object
+//We can also directly pass the object
 // getData({
 //     name:"Iphone",
 //     stock:20,
@@ -282,36 +301,45 @@
 
 // getData(sampleProduct);
 
+//---
+
 //Interface for Product(Object) Type:
-interface Product {
-    name: string;
-    stock: number;
-    price: number;
-    pic?: string,
-    readonly id:string //id is readonly field we can not update the value of id
-}
+// interface Product {
+//     name: string;
+//     stock: number;
+//     price: number;
+//     pic?: string,
+//     readonly id:string //id is readonly field we can not update the value of id
+// }
 
-type GetDataType = (product: Product) => void;
+// type GetDataType = (product: Product) => void;
 
-const getData: GetDataType = (product) => {
-    console.log(product);
-    // product.id="hidjf"; //It gives error because id is a readonly property
-}
+// const getData: GetDataType = (product) => {
+//     console.log(product);
+//     // product.id="hidjf"; //It gives error because id is a readonly property
+// }
 
-const sampleProduct: Product = {
-    name: "Iphone",
-    stock: 20,
-    price: 9991,
-    pic: "picurl",
-    id:"sufs"
-}
-getData(sampleProduct);
+// const sampleProduct: Product = {
+//     name: "Iphone",
+//     stock: 20,
+//     price: 9991,
+//     pic: "picurl",
+//     id:"sufs"
+// }
+// getData(sampleProduct);
+
+// --------------------------------------------------------------------------------------------
 
 
 //Error and Never Type in TS
-const errorHandler=()=>{
-    throw new Error();  //Here the return type is never
-}
-const errorHandler1=()=>{
-    return new Error();  //Here the return type is Error
-}
+// const errorHandler=():never=>{
+//     throw new Error();  //Here the return type is never
+// }
+// const errorHandler1=()=>{
+//     return new Error();  //Here the return type is Error
+// }
+
+
+//----------------------------------------------------------------------------------------------
+
+//Classes

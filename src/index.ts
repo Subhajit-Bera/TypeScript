@@ -343,3 +343,45 @@
 //----------------------------------------------------------------------------------------------
 
 //Classes
+class Player {
+    readonly id:string;
+
+    constructor(private height: number,public weight: number,protected power:number){
+        this.id=String(Math.random()*100);
+    }
+
+    //Getter
+    get getMyHeight(): number {
+        return this.height;
+    }
+
+    // Setter
+    set changeHeight(val: number) {  //For setter it will not return anything
+        this.height = val;
+    }
+}
+
+// const Subh=new Player(110,50,5);
+// console.log(Subh.getMyHeight); //access height using getter
+// Subh.changeHeight=170;  //modify height using setter
+// console.log(Subh.getMyHeight);
+
+
+//Subclass
+class Khiladi extends Player{
+    special:boolean;
+
+    constructor(height:number,weight:number,power:number,special:boolean){
+        super(height,weight,power);
+        this.special=special;
+    }
+
+    getPower=()=>{  //power is protected so we can access in this subclass 
+        return this.power;
+    }
+}
+
+const khiladi2=new Khiladi(200,70,10,true);
+console.log(khiladi2.getMyHeight);
+console.log(khiladi2.special);
+console.log(khiladi2.getPower());

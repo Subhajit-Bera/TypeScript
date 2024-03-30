@@ -344,10 +344,10 @@
 
 //Classes
 class Player {
-    readonly id:string;
+    readonly id: string;
 
-    constructor(private height: number,public weight: number,protected power:number){
-        this.id=String(Math.random()*100);
+    constructor(private height: number, public weight: number, protected power: number) {
+        this.id = String(Math.random() * 100);
     }
 
     //Getter
@@ -368,20 +368,47 @@ class Player {
 
 
 //Subclass
-class Khiladi extends Player{
-    special:boolean;
+class Khiladi extends Player {
+    special: boolean;
 
-    constructor(height:number,weight:number,power:number,special:boolean){
-        super(height,weight,power);
-        this.special=special;
+    constructor(height: number, weight: number, power: number, special: boolean) {
+        super(height, weight, power);
+        this.special = special;
     }
 
-    getPower=()=>{  //power is protected so we can access in this subclass 
+    get getPower():number{  //power is protected so we can access in this subclass 
         return this.power;
     }
 }
 
-const khiladi2=new Khiladi(200,70,10,true);
+const khiladi2 = new Khiladi(200, 70, 10, true);
 console.log(khiladi2.getMyHeight);
 console.log(khiladi2.special);
-console.log(khiladi2.getPower());
+console.log(khiladi2.getPower);
+
+interface ProductType {
+  name: string;
+  price: number;
+  stock: number;
+//   getId:()=>string; we can also define the function here
+  offer?: boolean;
+}
+
+interface GiveId {
+  getId: () => string;
+}
+
+class Product implements ProductType,GiveId {
+  private id: string = String(Math.random() * 1000);
+  
+  constructor(
+    public name: string,
+    public price: number,
+    public stock:number
+  ) {
+    
+  }
+  getId = () => this.id;
+}
+
+const product1 = new Product("Macbook", 2000, 20);

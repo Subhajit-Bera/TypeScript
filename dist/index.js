@@ -275,13 +275,23 @@ class Player {
 class Khiladi extends Player {
     constructor(height, weight, power, special) {
         super(height, weight, power);
-        this.getPower = () => {
-            return this.power;
-        };
         this.special = special;
+    }
+    get getPower() {
+        return this.power;
     }
 }
 const khiladi2 = new Khiladi(200, 70, 10, true);
 console.log(khiladi2.getMyHeight);
 console.log(khiladi2.special);
-console.log(khiladi2.getPower());
+console.log(khiladi2.getPower);
+class Product {
+    constructor(name, price, stock) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.id = String(Math.random() * 1000);
+        this.getId = () => this.id;
+    }
+}
+const product1 = new Product("Macbook", 2000, 20);

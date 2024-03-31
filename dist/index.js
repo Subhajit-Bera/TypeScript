@@ -272,26 +272,59 @@ class Player {
 // Subh.changeHeight=170;  //modify height using setter
 // console.log(Subh.getMyHeight);
 //Subclass
-class Khiladi extends Player {
-    constructor(height, weight, power, special) {
-        super(height, weight, power);
-        this.special = special;
-    }
-    get getPower() {
-        return this.power;
-    }
-}
-const khiladi2 = new Khiladi(200, 70, 10, true);
-console.log(khiladi2.getMyHeight);
-console.log(khiladi2.special);
-console.log(khiladi2.getPower);
-class Product {
-    constructor(name, price, stock) {
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
-        this.id = String(Math.random() * 1000);
-        this.getId = () => this.id;
-    }
-}
-const product1 = new Product("Macbook", 2000, 20);
+// class Khiladi extends Player {
+//     special: boolean;
+//     constructor(height: number, weight: number, power: number, special: boolean) {
+//         super(height, weight, power);
+//         this.special = special;
+//     }
+//     get getPower():number{  //power is protected so we can access in this subclass 
+//         return this.power;
+//     }
+// }
+// const khiladi2 = new Khiladi(200, 70, 10, true);
+// console.log(khiladi2.getMyHeight);
+// console.log(khiladi2.special);
+// console.log(khiladi2.getPower);
+//---
+// interface ProductType {
+//   name: string;
+//   price: number;
+//   stock: number;
+// //   getId:()=>string; we can also define the function here
+//   offer?: boolean;
+// }
+// interface GiveId {
+//   getId: () => string;
+// }
+// class Product implements ProductType,GiveId {
+//   private id: string = String(Math.random() * 1000);
+//   constructor(
+//     public name: string,
+//     public price: number,
+//     public stock:number
+//   ) {
+//   }
+//   getId = () => this.id;
+// }
+// const product1 = new Product("Macbook", 2000, 20);
+//------------------------------------------------------------------------------------------------
+// Type Assertion (DOM MANUPULATION)
+// const btn = document.getElementById("btn"); //So its can be a HTMl element or null
+// btn?.onclick  
+//For Avoid this optional chaining
+// const btn = document.getElementById("btn")!; =>By ! at the end we are confirming it could be anything without null
+// const btn = document.getElementById("btn") as HTMLElement;
+// const btn = <HTMLElement>document.getElementById("btn");
+// btn.onclick;
+const form = document.getElementById("myform");
+const myinput = document.querySelector("input");
+form.onsubmit = (e) => {
+    e.preventDefault();
+    const val = Number(myinput.value);
+    //creating HTML element
+    const h2 = document.createElement("h2");
+    h2.textContent = String(val + 20);
+    const body = document.querySelector("body");
+    body.append(h2);
+};

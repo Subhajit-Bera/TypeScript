@@ -416,7 +416,7 @@
 // const product1 = new Product("Macbook", 2000, 20);
 
 
-//------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 
 
 // Type Assertion (DOM MANUPULATION)
@@ -451,41 +451,41 @@
 
 // keyof Operator & Index Signature
 
-interface Person {
-    name: string;
-    email: string;
-}
-const myobj: Person = {
-    name: "Abhi",
-    email: "abhI@gmail.com",
-};
+// interface Person {
+//     name: string;
+//     email: string;
+// }
+// const myobj: Person = {
+//     name: "Abhi",
+//     email: "abhI@gmail.com",
+// };
 
 //Access  the value of object:
-const getName = (): string => {
-    // return myobj["name"];  //Both are correct way to access the value of a particular key
-    return myobj.name;
-};
-const getEmail = (): string => {
-    // return myobj["name"];
-    return myobj.email;
-};
+// const getName = (): string => {
+//     // return myobj["name"];  //Both are correct way to access the value of a particular key
+//     return myobj.name;
+// };
+// const getEmail = (): string => {
+//     // return myobj["name"];
+//     return myobj.email;
+// };
 
 //combination function for accessing multiple field (name,email)
 //We will use keyof operator for accessing all keys
-const getData = (key: keyof Person): string => {
-    return myobj[key];
-};
+// const getData = (key: keyof Person): string => {
+//     return myobj[key];
+// };
 
 
 //Dynamic Key:
-interface Person2 {
-    [key:string]:string
-}
+// interface Person2 {
+//     [key:string]:string
+// }
 
-const myobj2:Person2={
-    "name":"Subh",
-    "email":"abc@gmil.com"
-}
+// const myobj2:Person2={
+//     "name":"Subh",
+//     "email":"abc@gmil.com"
+// }
 
 //This can also be used insted of "keyof"
 // const getData2=(key:string):string=>{
@@ -512,14 +512,13 @@ const myobj2:Person2={
 // myobj[key]; //It will cause no error because key is const
 
 // But if we use let then it will give error because now key can be changed
-let key = "name";
-// myobj[key] 
-//here again we will use key of
-// myobj[key as keyof Person] 
+// let key = "name";
+// // myobj[key] 
+// //here again we will use key of
+// // myobj[key as keyof Person] 
 
-//If we only have the object and don't have knowledge abour interface in that case
-myobj[key as keyof typeof myobj]
-
-
+// //If we only have the object and don't have knowledge abour interface in that case
+// myobj[key as keyof typeof myobj]
 
 
+//------------------------------------------------------------------------------------------------------------

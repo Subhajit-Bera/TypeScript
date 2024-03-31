@@ -343,23 +343,23 @@
 //----------------------------------------------------------------------------------------------
 
 //Classes
-class Player {
-    readonly id: string;
+// class Player {
+//     readonly id: string;
 
-    constructor(private height: number, public weight: number, protected power: number) {
-        this.id = String(Math.random() * 100);
-    }
+//     constructor(private height: number, public weight: number, protected power: number) {
+//         this.id = String(Math.random() * 100);
+//     }
 
-    //Getter
-    get getMyHeight(): number {
-        return this.height;
-    }
+//     //Getter
+//     get getMyHeight(): number {
+//         return this.height;
+//     }
 
-    // Setter
-    set changeHeight(val: number) {  //For setter it will not return anything
-        this.height = val;
-    }
-}
+//     // Setter
+//     set changeHeight(val: number) {  //For setter it will not return anything
+//         this.height = val;
+//     }
+// }
 
 // const Subh=new Player(110,50,5);
 // console.log(Subh.getMyHeight); //access height using getter
@@ -402,13 +402,13 @@ class Player {
 
 // class Product implements ProductType,GiveId {
 //   private id: string = String(Math.random() * 1000);
-  
+
 //   constructor(
 //     public name: string,
 //     public price: number,
 //     public stock:number
 //   ) {
-    
+
 //   }
 //   getId = () => this.id;
 // }
@@ -429,20 +429,97 @@ class Player {
 // const btn = <HTMLElement>document.getElementById("btn");
 // btn.onclick;
 
-const form=document.getElementById("myform") as HTMLFormElement;
-const myinput=document.querySelector("input") as HTMLInputElement;
+// const form=document.getElementById("myform") as HTMLFormElement;
+// const myinput=document.querySelector("input") as HTMLInputElement;
 
 
-form.onsubmit=(e)=>{
-    e.preventDefault();
-    const val:number=Number(myinput.value);
-    
+// form.onsubmit=(e)=>{
+//     e.preventDefault();
+//     const val:number=Number(myinput.value);
 
-    //creating HTML element
-    const h2=document.createElement("h2");
-    h2.textContent=String(val+20);
-    const body=document.querySelector("body")!;
-    body.append(h2);
-    
-   
+
+//     //creating HTML element
+//     const h2=document.createElement("h2");
+//     h2.textContent=String(val+20);
+//     const body=document.querySelector("body")!;
+//     body.append(h2);
+
+// };
+
+
+//---
+
+// keyof Operator & Index Signature
+
+interface Person {
+    name: string;
+    email: string;
+}
+const myobj: Person = {
+    name: "Abhi",
+    email: "abhI@gmail.com",
 };
+
+//Access  the value of object:
+const getName = (): string => {
+    // return myobj["name"];  //Both are correct way to access the value of a particular key
+    return myobj.name;
+};
+const getEmail = (): string => {
+    // return myobj["name"];
+    return myobj.email;
+};
+
+//combination function for accessing multiple field (name,email)
+//We will use keyof operator for accessing all keys
+const getData = (key: keyof Person): string => {
+    return myobj[key];
+};
+
+
+//Dynamic Key:
+interface Person2 {
+    [key:string]:string
+}
+
+const myobj2:Person2={
+    "name":"Subh",
+    "email":"abc@gmil.com"
+}
+
+//This can also be used insted of "keyof"
+// const getData2=(key:string):string=>{
+//     return myobj2[key]
+// }
+// getData2("lol");  
+//But if we pass any key which is not present ts may consider that the key can be present
+
+//Solving this problem :
+// const getData2=(key: "name" | "email"):string=>{
+//     return myobj2[key]
+// }
+// getData2("lol");  //Now ts is showing error in compile time
+
+// But if the no of keys are huge then it is better to use "keyof" operator
+// const getData2=(key:keyof Person2):string=>{
+//     return myobj2[key];
+// }
+
+
+
+//Accessing value  of myobj using key
+// const key="name";
+// myobj[key]; //It will cause no error because key is const
+
+// But if we use let then it will give error because now key can be changed
+let key = "name";
+// myobj[key] 
+//here again we will use key of
+// myobj[key as keyof Person] 
+
+//If we only have the object and don't have knowledge abour interface in that case
+myobj[key as keyof typeof myobj]
+
+
+
+
